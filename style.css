@@ -18,6 +18,40 @@
     border-radius: 4px;
 }
 
+.content-section {
+    margin-bottom: 12px;
+}
+
+.content-section summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.content-section summary::-webkit-details-marker {
+    display: none;
+}
+
+.content-section summary::before {
+    content: "+";
+    width: 18px;
+    font-weight: 600;
+}
+
+.content-section[open] summary::before {
+    content: "-";
+}
+
+.content-section h4 {
+    margin: 0;
+}
+
+.content-section ul {
+    margin-top: 8px;
+}
+
 @media (max-width: 767px) {
     .profile-intro {
         flex-direction: column;
