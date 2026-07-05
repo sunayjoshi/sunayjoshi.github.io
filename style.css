@@ -19,7 +19,9 @@
 }
 
 .interests-note {
-    font-size: 0.88em;
+    color: #777;
+    font-size: 0.78em;
+    line-height: 1.55;
 }
 
 .content-section {
