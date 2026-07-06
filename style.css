@@ -24,20 +24,6 @@
     line-height: 1.55;
 }
 
-.selection-reveal {
-    color: transparent;
-}
-
-.selection-reveal::selection {
-    color: #212529;
-    background: #b3d7ff;
-}
-
-.selection-reveal::-moz-selection {
-    color: #212529;
-    background: #b3d7ff;
-}
-
 .content-section {
     margin-bottom: 12px;
 }
