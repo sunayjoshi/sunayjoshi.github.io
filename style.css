@@ -24,6 +24,22 @@
     line-height: 1.55;
 }
 
+.interests-dropdown {
+    margin-bottom: 1rem;
+}
+
+.interests-dropdown summary {
+    cursor: pointer;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.interests-dropdown p {
+    margin-top: 0.75rem;
+    margin-bottom: 0;
+}
+
 .content-section {
     margin-bottom: 12px;
 }
