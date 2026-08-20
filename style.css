@@ -75,6 +75,15 @@
     margin-top: 8px;
 }
 
+.creation-image {
+    display: block;
+    width: 420px;
+    max-width: 100%;
+    height: auto;
+    margin-top: 8px;
+    border-radius: 4px;
+}
+
 @media (max-width: 767px) {
     .profile-intro {
         flex-direction: column;
