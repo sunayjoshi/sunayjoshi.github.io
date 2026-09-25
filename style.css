@@ -84,6 +84,28 @@
     border-radius: 4px;
 }
 
+/* Display the photo at (205, 99), 883 x 1384, inside the original 1350 x 1800 image. */
+.mural-viewport {
+    position: relative;
+    width: 420px;
+    max-width: 100%;
+    aspect-ratio: 883 / 1384;
+    margin-top: 8px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.mural-viewport .creation-image {
+    position: absolute;
+    width: calc(100% * 1350 / 883);
+    max-width: none;
+    height: auto;
+    margin: 0;
+    left: calc(-100% * 205 / 883);
+    top: calc(-100% * 99 / 1384);
+    border-radius: 0;
+}
+
 @media (max-width: 767px) {
     .profile-intro {
         flex-direction: column;
