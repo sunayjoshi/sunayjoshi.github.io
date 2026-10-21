@@ -75,6 +75,13 @@
     margin-top: 8px;
 }
 
+.entry-annotation {
+    margin: 0.25rem 0 0.75rem;
+    color: #555;
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
 .creation-image {
     display: block;
     width: 420px;
