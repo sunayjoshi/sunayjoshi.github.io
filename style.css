@@ -9,6 +9,11 @@
     min-width: 0;
 }
 
+.profile-copy > p,
+.profile-picture > summary {
+    font-size: 1rem;
+}
+
 .profile-picture {
     width: 230px;
     max-width: 36%;
