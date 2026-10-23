@@ -9,9 +9,39 @@
     min-width: 0;
 }
 
-.profile-photo {
+.profile-picture {
     width: 230px;
     max-width: 36%;
+    flex-shrink: 0;
+}
+
+.profile-picture > summary {
+    cursor: pointer;
+}
+
+.profile-picture > summary:focus-visible {
+    outline: 2px solid #005fcc;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.profile-picture[open] > summary {
+    display: block;
+    list-style: none;
+}
+
+.profile-picture[open] > summary::-webkit-details-marker {
+    display: none;
+}
+
+.profile-picture[open] .profile-picture-label,
+.profile-picture:not([open]) .profile-photo {
+    display: none;
+}
+
+.profile-photo {
+    display: block;
+    width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     object-position: 64% center;
@@ -119,7 +149,7 @@
         gap: 18px;
     }
 
-    .profile-photo {
+    .profile-picture {
         order: -1;
         width: min(100%, 300px);
         max-width: 100%;
