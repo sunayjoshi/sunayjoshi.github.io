@@ -1,4 +1,4 @@
-.latest-update {
+.profile-copy > .latest-update {
     margin-bottom: 0.75rem;
     color: #555;
     font-size: 0.9rem;
@@ -71,7 +71,7 @@
 
 .interests-dropdown {
     font-size: 0.88em;
-    margin-bottom: 1rem;
+    margin-bottom: 0.25rem;
 }
 
 .interests-dropdown summary {
