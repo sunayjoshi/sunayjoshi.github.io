@@ -5,7 +5,7 @@
 }
 
 .latest-update-label {
-    color: #5b9dc7;
+    color: #52769a;
 }
 
 .latest-update-link,
@@ -151,13 +151,13 @@
     border-radius: 4px;
 }
 
-/* Hide the original screenshot's 284-pixel black band without altering its text. */
+/* Show source rows 284 through 1695, omitting the black band and last two text lines. */
 .stopover-viewport {
     display: block;
     position: relative;
     width: 420px;
     max-width: 100%;
-    aspect-ratio: 912 / 1504;
+    aspect-ratio: 912 / 1412;
     margin-top: 8px;
     overflow: hidden;
     border-radius: 4px;
@@ -168,7 +168,7 @@
     width: 100%;
     max-width: none;
     height: auto;
-    top: calc(-100% * 284 / 1504);
+    top: calc(-100% * 284 / 1412);
     margin: 0;
     border-radius: 0;
 }
