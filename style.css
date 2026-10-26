@@ -45,10 +45,6 @@
     list-style: none;
 }
 
-.profile-picture[open] > summary::-webkit-details-marker {
-    display: none;
-}
-
 .profile-picture[open] .profile-picture-label,
 .profile-picture:not([open]) .profile-photo {
     display: none;
@@ -90,7 +86,9 @@
     margin-bottom: 12px;
 }
 
-.content-section summary {
+.content-section > summary,
+.interests-dropdown > summary,
+.profile-picture:not([open]) > summary {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -98,17 +96,23 @@
     list-style: none;
 }
 
-.content-section summary::-webkit-details-marker {
+.content-section > summary::-webkit-details-marker,
+.interests-dropdown > summary::-webkit-details-marker,
+.profile-picture > summary::-webkit-details-marker {
     display: none;
 }
 
-.content-section summary::before {
+.content-section > summary::before,
+.interests-dropdown > summary::before,
+.profile-picture:not([open]) > summary::before {
     content: "+";
     width: 18px;
+    flex-shrink: 0;
     font-weight: 600;
 }
 
-.content-section[open] summary::before {
+.content-section[open] > summary::before,
+.interests-dropdown[open] > summary::before {
     content: "-";
 }
 
