@@ -151,6 +151,28 @@
     border-radius: 4px;
 }
 
+/* Hide the original screenshot's 284-pixel black band without altering its text. */
+.stopover-viewport {
+    display: block;
+    position: relative;
+    width: 420px;
+    max-width: 100%;
+    aspect-ratio: 912 / 1504;
+    margin-top: 8px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.stopover-viewport .creation-image {
+    position: absolute;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    top: calc(-100% * 284 / 1504);
+    margin: 0;
+    border-radius: 0;
+}
+
 /* Display the photo at (205, 99), 883 x 1384, inside the original 1350 x 1800 image. */
 .mural-viewport {
     position: relative;
