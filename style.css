@@ -8,6 +8,15 @@
     color: #5b9dc7;
 }
 
+.latest-update-link,
+.latest-update-link:visited,
+.latest-update-link:hover,
+.latest-update-link:focus,
+.latest-update-link:active {
+    color: inherit;
+    text-decoration: none;
+}
+
 .profile-intro {
     display: flex;
     align-items: flex-start;
