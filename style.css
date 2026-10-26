@@ -4,6 +4,10 @@
     font-size: 0.9rem;
 }
 
+.latest-update-label {
+    color: #5b9dc7;
+}
+
 .profile-intro {
     display: flex;
     align-items: flex-start;
