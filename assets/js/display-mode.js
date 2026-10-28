@@ -35,11 +35,10 @@
 
     function updateDescription(description) {
         const { paragraph, button, title, expanded } = description;
-        const action = expanded ? "Hide description" : "Show description";
         button.hidden = mode !== "compact";
-        button.textContent = action;
+        button.textContent = "About";
         button.setAttribute("aria-expanded", String(expanded));
-        button.setAttribute("aria-label", `${action}: ${title}`);
+        button.setAttribute("aria-label", `About: ${title}`);
         paragraph.hidden = mode === "compact" && !expanded;
     }
 
