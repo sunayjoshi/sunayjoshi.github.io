@@ -288,7 +288,6 @@ html[data-display-mode="compact"] .section-collection {
 html[data-display-mode="compact"] .section-collection > .content-section {
     min-width: 0;
     margin-bottom: 0;
-    border-bottom: 1px solid #ddd;
 }
 
 html[data-display-mode="compact"] .section-collection > .content-section > summary {
