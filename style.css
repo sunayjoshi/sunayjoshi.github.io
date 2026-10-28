@@ -39,6 +39,10 @@
     font-size: 1rem;
 }
 
+.profile-copy > p > strong {
+    margin-inline-end: 0.25em;
+}
+
 .profile-picture {
     width: 210px;
     max-width: 36%;
@@ -253,8 +257,8 @@
 }
 
 .annotation-toggle {
-    display: block;
-    margin-top: 0.25rem;
+    display: inline-block;
+    margin-inline-start: 0.5rem;
     padding: 0.15rem 0;
     border: 0;
     background: transparent;
@@ -298,6 +302,10 @@
 
 .seminar-pdfs > ul {
     padding-left: 1.5rem;
+}
+
+.seminar-pdfs time {
+    color: #666;
 }
 
 html[data-display-mode="compact"] .section-collection {
