@@ -207,3 +207,128 @@
         max-width: 100%;
     }
 }
+
+/* Viewing preferences are an enhancement; the original page works without JS. */
+.display-preferences {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1rem;
+    margin: 0 15px 0.5rem;
+    font-size: 0.9rem;
+}
+
+.display-preferences[hidden],
+.annotation-toggle[hidden],
+.entry-annotation[hidden] {
+    display: none;
+}
+
+.display-preferences label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    min-height: 32px;
+    cursor: pointer;
+}
+
+.display-preferences input {
+    margin: 0;
+    accent-color: #005fcc;
+}
+
+.display-preferences input:focus-visible,
+.annotation-toggle:focus-visible,
+.seminar-pdfs > summary:focus-visible {
+    outline: 2px solid #005fcc;
+    outline-offset: 3px;
+}
+
+.annotation-toggle {
+    display: block;
+    margin-top: 0.25rem;
+    padding: 0.15rem 0;
+    border: 0;
+    background: transparent;
+    color: #0056b3;
+    font: inherit;
+    font-size: 0.9em;
+    text-align: left;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.seminar-pdfs {
+    margin: 0.3rem 0 0.65rem;
+}
+
+.seminar-pdfs > summary {
+    width: fit-content;
+    max-width: 100%;
+    padding: 0.2rem 0;
+    cursor: pointer;
+}
+
+.seminar-pdfs > ul {
+    padding-left: 1.5rem;
+}
+
+.seminar-pdfs li {
+    margin-bottom: 0.4rem;
+}
+
+html[data-display-mode="compact"] .section-collection {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 8px 24px;
+}
+
+html[data-display-mode="compact"] .section-collection > .content-section {
+    min-width: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #ddd;
+}
+
+html[data-display-mode="compact"] .section-collection > .content-section > summary {
+    padding: 0.5rem 0;
+}
+
+html[data-display-mode="compact"] .section-collection > .content-section[open] {
+    grid-column: 1 / -1;
+    padding-bottom: 0.5rem;
+}
+
+html[data-display-mode="compact"] .content-section > .section-note {
+    margin-bottom: 0.5rem;
+}
+
+html[data-display-mode="compact"] .content-section > ul {
+    margin-top: 0.4rem;
+    margin-bottom: 0.5rem;
+}
+
+html[data-display-mode="compact"] .content-section li {
+    overflow-wrap: anywhere;
+}
+
+@media (min-width: 640px) {
+    html[data-display-mode="compact"] .section-collection {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1000px) {
+    html[data-display-mode="compact"] .section-collection {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (pointer: coarse) {
+    .display-preferences label,
+    .annotation-toggle,
+    .seminar-pdfs > summary {
+        min-height: 44px;
+    }
+}
