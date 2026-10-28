@@ -1,3 +1,10 @@
+.dashboard h3,
+.content-section > summary h4 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 500;
+    font-optical-sizing: auto;
+}
+
 .profile-copy > .latest-update {
     margin-bottom: 0.75rem;
     color: #555;
