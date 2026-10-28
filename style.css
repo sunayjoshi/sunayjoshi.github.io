@@ -300,6 +300,10 @@ html[data-display-mode="compact"] .section-collection {
     gap: 8px 24px;
 }
 
+html[data-display-mode="compact"] #footer {
+    padding-top: 2rem;
+}
+
 html[data-display-mode="compact"] .section-collection > .content-section {
     min-width: 0;
     margin-bottom: 0;
