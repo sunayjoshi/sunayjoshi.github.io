@@ -41,6 +41,9 @@
 
 .profile-copy > p > strong {
     margin-inline-end: 0.25em;
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 700;
+    font-optical-sizing: auto;
 }
 
 .profile-picture {
