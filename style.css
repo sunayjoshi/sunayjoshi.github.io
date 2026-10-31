@@ -1,5 +1,6 @@
 .dashboard h3,
-.content-section > summary h4 {
+.content-section > summary h4,
+.topic-group > summary h5 {
     font-family: "Source Serif 4", Georgia, serif;
     font-weight: 500;
     font-optical-sizing: auto;
@@ -259,7 +260,7 @@
 
 .display-preferences input:focus-visible,
 .annotation-toggle:focus-visible,
-.seminar-pdfs > summary:focus-visible {
+.content-section details > summary:focus-visible {
     outline: 2px solid #005fcc;
     outline-offset: 3px;
 }
@@ -278,11 +279,11 @@
     cursor: pointer;
 }
 
-.seminar-pdfs {
+.content-section details {
     margin: 0.3rem 0 0.65rem;
 }
 
-.seminar-pdfs > summary {
+.content-section details > summary {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -293,23 +294,32 @@
     list-style: none;
 }
 
-.seminar-pdfs > summary::-webkit-details-marker {
+.content-section details > summary::-webkit-details-marker {
     display: none;
 }
 
-.seminar-pdfs > summary::before {
+.content-section details > summary::before {
     content: "+";
     width: 18px;
     flex-shrink: 0;
     font-weight: 600;
 }
 
-.seminar-pdfs[open] > summary::before {
+.content-section details[open] > summary::before {
     content: "-";
 }
 
-.seminar-pdfs > ul {
+.content-section details > ul {
     padding-left: 1.5rem;
+}
+
+.content-section > .topic-group {
+    margin-inline-start: 1.5rem;
+}
+
+.topic-group > summary h5 {
+    margin: 0;
+    font-size: 1.05rem;
 }
 
 .seminar-pdfs time {
@@ -369,7 +379,7 @@ html[data-display-mode="compact"] .content-section li {
 @media (pointer: coarse) {
     .display-preferences label,
     .annotation-toggle,
-    .seminar-pdfs > summary,
+    .content-section details > summary,
     .profile-section > summary {
         min-height: 44px;
     }
