@@ -326,11 +326,31 @@
     color: #666;
 }
 
-html[data-display-mode="compact"] .section-collection {
+html[data-display-mode="compact"] .section-collection,
+html[data-display-mode="compact"] .profile-copy {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     align-items: start;
     gap: 8px 24px;
+}
+
+html[data-display-mode="compact"] .profile-copy {
+    width: 100%;
+}
+
+html[data-display-mode="compact"] .profile-section {
+    min-width: 0;
+    margin-bottom: 0;
+}
+
+html[data-display-mode="compact"] .profile-section > summary {
+    padding: 0.5rem 0;
+}
+
+html[data-display-mode="compact"] .profile-section[open],
+html[data-display-mode="compact"] .profile-copy > .interests-dropdown,
+html[data-display-mode="compact"] .profile-copy > .latest-update {
+    grid-column: 1 / -1;
 }
 
 html[data-display-mode="compact"] #footer {
@@ -365,6 +385,10 @@ html[data-display-mode="compact"] .content-section li {
 }
 
 @media (min-width: 640px) {
+    html[data-display-mode="compact"] .profile-copy {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
     html[data-display-mode="compact"] .section-collection {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
