@@ -1,6 +1,8 @@
 .dashboard h3,
 .content-section > summary h4,
-.topic-group > summary h5 {
+.topic-group > summary h5,
+.latest-update-label,
+.interests-dropdown > summary {
     font-family: "Source Serif 4", Georgia, serif;
     font-weight: 500;
     font-optical-sizing: auto;
