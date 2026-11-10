@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="A searchable notebook of Sunay Storage research ideas, with feasibility and impact assessments.">
+  <meta name="theme-color" content="#f8f8f4">
+  <title>Ideas · Sunay Storage</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23273e34'/%3E%3Ctext x='20' y='28' text-anchor='middle' font-size='27' fill='white'%3ES%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pareto.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#ideas">Skip to ideas</a>
+  <main>
+    <header>
+      <a class="home-link" href="/">← Sunay Joshi</a>
+      <div class="eyebrow"><span class="mark" aria-hidden="true">S</span> SUNAY STORAGE <a class="source-link" href="https://www.overleaf.com/project/679049496c769f29fefd3f44" target="_blank" rel="noopener noreferrer">Open document</a></div>
+      <h1>Ideas</h1>
+      <p class="intro">Find a question worth working on.</p>
+      <p class="legend"><strong>Feasibility</strong> — a credible paper in 12 weeks. <strong>Impact</strong> — the value of that result if it succeeds.</p>
+      <details class="rubric"><summary>About the scores <span>1.0–5.0</span></summary><div id="rubric-body"></div></details>
+    </header>
+    <section class="controls" aria-label="Search and sort ideas">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+        <label for="search" class="sr-only">Search ideas</label>
+        <input type="search" id="search" placeholder="Search ideas, keywords, or IDs…" autocomplete="off" spellcheck="false">
+        <button id="clear" type="button" hidden aria-label="Clear search">×</button>
+      </div>
+      <label for="sort" class="sr-only">Sort ideas</label>
+      <select id="sort"><option value="document">Document order</option><option value="feasibility">Feasibility: high to low</option><option value="impact">Impact: high to low</option></select>
+    </section>
+    <div class="list-meta"><p id="count" role="status" aria-live="polite">Loading ideas…</p><span class="snapshot">Reviewed Nov 10, 2026</span></div>
+    <div class="view-controls"><label><input type="checkbox" id="show-plot" checked> Show plot</label><label><input type="checkbox" id="pareto-only"> Pareto only</label><span id="frontier-count"></span></div>
+    <section id="pareto-panel" aria-labelledby="pareto-heading"><h2 id="pareto-heading">Feasibility × impact</h2><p class="pareto-description">A problem is Pareto-optimal if no other scored problem is at least as good on both axes and better on one. Higher and farther right is better.</p><div id="pareto-chart"></div></section>
+    <div class="column-labels" aria-hidden="true"><span>IDEA</span><span>FEASIBILITY</span><span>IMPACT</span></div>
+    <section id="ideas" aria-label="Research ideas" tabindex="-1"></section>
+    <div id="empty" hidden><h2>No matching ideas</h2><p>Try fewer words, a related term, or an idea ID.</p><button id="reset" type="button">Clear search</button></div>
+    <noscript><p>This idea browser needs JavaScript for search and sorting. <a href="https://www.overleaf.com/project/679049496c769f29fefd3f44">Read the original document.</a></p></noscript>
+    <footer>Two separate judgments, no combined ranking. <span>N/A means the entry was not scored.</span></footer>
+  </main>
+</body>
+</html>
