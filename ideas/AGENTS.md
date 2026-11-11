@@ -16,3 +16,7 @@ Before every navigator update, retrieve the owner's saved hide/show preferences 
 - If the preference backend cannot be read, report that limitation and preserve the last applied visibility state. Do not silently restore hidden content.
 
 The popup's **Hide / show** link opens this private editor. Choices are saved in the backend immediately; the public navigator changes on the next site update.
+
+## Visual design
+
+Keep the interface simple and consistent. Use the shared system sans-serif font for headings, body text, charts, controls, and idea IDs. Reserve specialized fonts for actual code or mathematical notation. Avoid duplicated headings and instructional text; keep assessment details in matching plain disclosures and popup actions easy to tap.

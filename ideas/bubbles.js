@@ -39,8 +39,7 @@ export function mountBubbles(container,{hierarchy,onNavigate,onOpen}){
   const node=index.nodes.get(focus),children=node.children||[];
   if(!layoutCache.has(focus))layoutCache.set(focus,packCircles(children.map(n=>({node:n,weight:index.descendants.get(n.id).size}))));
   const geometry=layoutCache.get(focus);svg.replaceChildren(svgEl('title',{},node.name||node.label),svgEl('desc',{},'Choose a topic to zoom in, or an individual idea to read it. The adjacent list provides the same navigation. Bubble area indicates the number of ideas, not their value.'));
-  const h=document.createElement('h3');h.textContent=node.name||node.label;
-  const list=document.createElement('ul');side.replaceChildren(h,list);
+  const list=document.createElement('ul');side.replaceChildren(list);
     geometry.forEach(({x,y,r,item},i)=>{
    const child=item.node,total=index.descendants.get(child.id).size,matching=[...index.descendants.get(child.id)].filter(id=>visible.has(id)).length;
    const label=child.name||child.label||child.id,isLeaf=!!child.ideaId;
@@ -53,10 +52,10 @@ export function mountBubbles(container,{hierarchy,onNavigate,onOpen}){
    const group=svgEl('g',{transform:`translate(${x} ${y})`,class:`topic-bubble${matching?'':' is-dim'}${isLeaf?' is-leaf':''}`,role:'button',tabindex:matching?'0':'-1','aria-label':isLeaf?`Open ${child.ideaId}: ${label}`:`Explore ${label}, ${matching} of ${total} ideas`,'aria-disabled':matching?'false':'true','data-topic':child.id});
    const tint=['#e4edf4','#edf1f3','#e5ece9','#edeaf1','#f1ede5','#e8edf5','#e9eff0','#eee9e7'][i%8];
    group.append(svgEl('circle',{r,fill:tint}),svgEl('title',{},`${label} · ${matching} of ${total} ideas`));
-   const font=Math.min(18,Math.max(10,r/6)),maxChars=Math.max(7,Math.floor((2*r*.78)/(font*.54))),lines=wrapText(label,maxChars,r<50?3:4),lineHeight=font*1.22;
+   const font=Math.min(19,Math.max(11,r/5.7)),maxChars=Math.max(7,Math.floor((2*r*.78)/(font*.54))),lines=wrapText(label,maxChars,r<50?3:4),lineHeight=font*1.22;
    const text=svgEl('text',{'text-anchor':'middle','font-size':font,'pointer-events':'none','aria-hidden':'true'});
    lines.forEach((line,j)=>text.append(svgEl('tspan',{x:0,y:(j-(lines.length-1)/2)*lineHeight-7},line)));
-   text.append(svgEl('tspan',{x:0,y:(lines.length/2)*lineHeight+13,class:'bubble-count','font-size':Math.max(10,font*.77)},isLeaf?child.ideaId:`${matching===total?total:`${matching} / ${total}`} ideas`));group.append(text);
+   text.append(svgEl('tspan',{x:0,y:(lines.length/2)*lineHeight+13,class:'bubble-count','font-size':Math.max(10,font*.72)},isLeaf?child.ideaId:`${matching===total?total:`${matching} / ${total}`} ideas`));group.append(text);
    group.addEventListener('click',activate);group.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate();}if(e.key==='Escape')onNavigate(index.parents.get(focus)||hierarchy.id);});svg.append(group);
    const li=document.createElement('li'),button=document.createElement('button');button.type='button';button.disabled=!matching;button.className=isLeaf?'bubble-list-leaf':'';
    const title=document.createElement('span');title.textContent=label;const count=document.createElement('span');count.className='bubble-list-count';count.textContent=isLeaf?child.ideaId:`${matching===total?total:`${matching}/${total}`} →`;button.append(title,count);button.addEventListener('click',activate);li.append(button);list.append(li);
