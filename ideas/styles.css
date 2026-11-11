@@ -18,3 +18,7 @@ main{max-width:1240px;padding-top:36px}.title-row{display:flex;align-items:basel
 /* Keep narrow layouts and the animated zoom inside their own containers. */
 .title-row>div{min-width:0}.bubble-canvas{overflow:hidden}
 @media(max-width:640px){.title-row .snapshot{white-space:normal;flex:0 0 80px;overflow-wrap:anywhere}.view-tabs{min-width:0}.bubble-directory button>span:first-child{min-width:0;overflow-wrap:anywhere}.dialog-toolbar>span{min-width:0;overflow-wrap:anywhere}#breadcrumbs button{max-width:100%;overflow-wrap:anywhere}}
+
+/* Keep the controls close to the content; explanatory detail lives in disclosures. */
+.title-row{margin-bottom:22px}.title-row h1{margin:0}.search-guidance{justify-content:flex-end;margin:0}.search-guidance .sr-only{margin:-1px}.search-guidance>button{margin-top:7px}.view-bar{margin-top:20px}.list-toolbar{justify-content:flex-end;gap:9px}.list-toolbar label{white-space:nowrap}.list-toolbar select{width:250px}.rubric{margin-bottom:0}
+@media(max-width:640px){.title-row{margin-bottom:18px}.view-bar{margin-top:14px}.list-toolbar{flex-direction:row;align-items:center}.list-toolbar select{flex:1;min-width:0;width:auto}}
