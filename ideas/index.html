@@ -5,45 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="A searchable notebook of Sunay Storage research ideas, with feasibility and impact assessments.">
+  <meta name="description" content="Explore Sunay Storage by topic, search research questions, and compare feasibility and impact.">
   <meta name="theme-color" content="#ffffff">
   <title>Idea navigator · Sunay Joshi</title>
   <link rel="icon" href="/images/favicon.ico?v=upenn">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261110-site">
-  <link rel="stylesheet" href="pareto.css?v=20261110-site">
-  <script type="module" src="app.js"></script>
+  <link rel="stylesheet" href="styles.css?v=20261111">
+  <link rel="stylesheet" href="pareto.css?v=20261111">
+  <script type="module" src="app.js?v=20261111"></script>
 </head>
 <body>
-  <a class="skip-link" href="#ideas">Skip to ideas</a>
+  <a class="skip-link" href="#explore">Skip to ideas</a>
   <main>
     <header>
-      <nav class="header-links" aria-label="Page links"><a class="home-link" href="/">← Sunay Joshi</a><a class="source-link" href="https://www.overleaf.com/project/679049496c769f29fefd3f44" target="_blank" rel="noopener noreferrer">Open document</a></nav>
-      <h1>Idea navigator</h1>
-      <p class="intro">Research ideas from Sunay Storage, with feasibility and impact assessments.</p>
-      <p class="legend"><strong>Feasibility</strong> — a credible paper in 12 weeks. <strong>Impact</strong> — the value of that result if it succeeds.</p>
-      <details class="rubric"><summary>About the scores <span>1.0–5.0</span></summary><div id="rubric-body"></div></details>
+      <nav class="header-links" aria-label="Page links"><a class="home-link" href="/">← Sunay Joshi</a><a class="source-link" href="https://www.overleaf.com/project/679049496c769f29fefd3f44" target="_blank" rel="noopener noreferrer">Open document ↗</a></nav>
+      <div class="title-row"><div><p class="eyebrow">SUNAY STORAGE</p><h1>Idea navigator</h1></div><span class="snapshot" id="snapshot">Updated November 11, 2026</span></div>
+      <p class="intro">Start with a topic, follow a question, or find a connection.</p>
     </header>
-    <section class="controls" aria-label="Search and sort ideas">
+    <section class="controls" aria-label="Search and filter ideas">
       <div class="search-wrap">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
         <label for="search" class="sr-only">Search ideas</label>
-        <input type="search" id="search" placeholder="Search ideas, keywords, or IDs…" autocomplete="off" spellcheck="false">
+        <input type="search" id="search" placeholder="What are you interested in? Try ‘why models take shortcuts’" autocomplete="off" spellcheck="false" aria-describedby="search-status">
         <button id="clear" type="button" hidden aria-label="Clear search">×</button>
       </div>
-      <label for="sort" class="sr-only">Sort ideas</label>
-      <select id="sort"><option value="document">Document order</option><option value="feasibility">Feasibility: high to low</option><option value="impact">Impact: high to low</option></select>
+      <label for="topic" class="sr-only">Topic collection</label><select id="topic"><option value="all">All topics</option></select>
     </section>
-    <div class="list-meta"><p id="count" role="status" aria-live="polite">Loading ideas…</p><span class="snapshot">Reviewed Nov 10, 2026</span></div>
-    <div class="view-controls"><label><input type="checkbox" id="show-plot" checked> Show plot</label><label><input type="checkbox" id="pareto-only"> Pareto only</label><span id="frontier-count"></span></div>
-    <section id="pareto-panel" aria-labelledby="pareto-heading"><h2 id="pareto-heading">Feasibility × impact</h2><p class="pareto-description">A problem is Pareto-optimal if no other scored problem is at least as good on both axes and better on one. Higher and farther right is better.</p><div id="pareto-chart"></div></section>
-    <div class="column-labels" aria-hidden="true"><span>IDEA</span><span>FEASIBILITY</span><span>IMPACT</span></div>
-    <section id="ideas" aria-label="Research ideas" tabindex="-1"></section>
-    <div id="empty" hidden><h2>No matching ideas</h2><p>Try fewer words, a related term, or an idea ID.</p><button id="reset" type="button">Clear search</button></div>
-    <noscript><p>This idea browser needs JavaScript for search and sorting. <a href="https://www.overleaf.com/project/679049496c769f29fefd3f44">Read the original document.</a></p></noscript>
-    <footer>Two separate judgments, no combined ranking. <span>N/A means the entry was not scored.</span></footer>
+    <div class="search-guidance"><p id="search-status">Search by meaning, words, or an idea ID.</p><button class="text-button" id="reset-filters" type="button" hidden>Reset filters</button></div>
+    <div id="suggestions" class="topic-chips" aria-label="Search suggestions"><button type="button" data-query="Why do models take shortcuts?">Model behavior</button><button type="button" data-query="Human AI decision making">Human–AI decisions</button><button type="button" data-query="Synthetic training data">Synthetic data</button><button type="button" data-query="Learning and creativity after AI">Curiosity &amp; creativity</button></div>
+    <section id="explore" tabindex="-1">
+      <div class="view-bar">
+        <div class="view-tabs" role="tablist" aria-label="Explore ideas">
+          <button id="tab-bubbles" type="button" role="tab" data-view="bubbles" aria-controls="bubbles-panel" aria-selected="true">Topic bubbles</button>
+          <button id="tab-list" type="button" role="tab" data-view="list" aria-controls="list-panel" aria-selected="false" tabindex="-1">List</button>
+          <button id="tab-pareto" type="button" role="tab" data-view="pareto" aria-controls="pareto-panel" aria-selected="false" tabindex="-1">Feasibility × impact</button>
+        </div>
+        <label class="pareto-filter"><input type="checkbox" id="pareto-only"> Pareto only</label>
+      </div>
+      <div class="navigation-line"><nav id="breadcrumbs" aria-label="Topic path"></nav><p id="count" role="status" aria-live="polite">Loading ideas…</p></div>
+      <section id="bubbles-panel" role="tabpanel" aria-labelledby="tab-bubbles"><p class="view-intro">Choose a bubble to zoom in, then open an individual question. <span>Size shows the number of ideas.</span></p><div id="bubbles-chart"></div></section>
+      <section id="pareto-panel" role="tabpanel" aria-labelledby="tab-pareto" hidden><h2>Feasibility × impact</h2><p class="pareto-description"><strong>Feasibility:</strong> a credible paper in twelve weeks. <strong>Impact:</strong> the value of that result if it succeeds. The frontier contains ideas that no other scored idea matches or exceeds on both axes while improving at least one.</p><div id="pareto-chart"></div></section>
+      <section id="list-panel" role="tabpanel" aria-labelledby="tab-list" hidden>
+        <div class="list-toolbar"><span>Open an idea to read the question and assessment.</span><label for="sort" class="sr-only">Sort ideas</label><select id="sort"><option value="relevance">Relevance</option><option value="document">Document order</option><option value="feasibility">Feasibility: high to low</option><option value="impact">Impact: high to low</option></select></div>
+        <div class="column-labels" aria-hidden="true"><span>IDEA</span><span>FEASIBILITY</span><span>IMPACT</span></div>
+        <section id="ideas" aria-label="Research ideas"></section>
+      </section>
+      <div id="empty" hidden><h2>No matching ideas</h2><p>Try a broader question or clear the topic filter.</p><button id="reset" type="button">Reset search and filters</button></div>
+    </section>
+    <details class="rubric"><summary>About the scores and source</summary><div id="rubric-body"></div></details>
+    <details class="archive-info"><summary>MultiRisk project notes</summary><p>Revision-specific entries are preserved separately from the research ideas. Their original IDs still open the archived notes.</p><div id="archive-links"></div></details>
+    <noscript><p>This navigator needs JavaScript for search and visualizations. <a href="https://www.overleaf.com/project/679049496c769f29fefd3f44">Read the original document.</a></p></noscript>
+    <footer><span>Two separate judgments; no combined ranking.</span><span>N/A = no separate paper assessment · “Unrated” = not yet assessed</span></footer>
   </main>
+  <dialog id="idea-dialog" aria-labelledby="dialog-title"><div class="dialog-toolbar"><span id="dialog-id"></span><button id="copy-link" type="button">Copy link</button><button id="close-dialog" type="button" aria-label="Close idea">Close ×</button></div><h2 id="dialog-title"></h2><div id="dialog-scores"></div><div id="dialog-body"></div></dialog>
 </body>
 </html>
