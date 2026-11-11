@@ -1,7 +1,7 @@
-import{sortIdeas}from'./sorting.js?v=20261111c';
-import{createSearch,searchText}from'./search.js?v=20261111c';
-import{paretoIds,mountPareto}from'./pareto.js?v=20261111c';
-import{indexHierarchy,mountBubbles}from'./bubbles.js?v=20261111c';
+import{sortIdeas}from'./sorting.js?v=20261111d';
+import{createSearch,searchText}from'./search.js?v=20261111d';
+import{paretoIds,mountPareto}from'./pareto.js?v=20261111d';
+import{indexHierarchy,mountBubbles}from'./bubbles.js?v=20261111d';
 const $=id=>document.getElementById(id);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeURL=value=>{try{const u=new URL(value);return ['https:','http:'].includes(u.protocol)?u.href:null;}catch{return null;}};
@@ -24,7 +24,8 @@ function detailsHTML(row){
  const refs=[...new Set([...(row.evidence||[]),...checked.keys()])].filter(safeURL);
  const references=refs.map((url,i)=>{const e=checked.get(url);const host=new URL(url).hostname.replace(/^www\./,'');let text='';if(e){const establishes=e.establishes||e.supports||e.findings||e.does;const leaves=e.does_not_establish||e.does_not_resolve||e.limits||e.does_not;const level=e.checked_level||e.checked||e.access||e.sections_read;if(level)text+=`<p>${esc(level)}</p>`;if(establishes)text+=`<p><strong>Establishes:</strong> ${esc(establishes)}</p>`;if(leaves)text+=`<p><strong>Leaves open:</strong> ${esc(leaves)}</p>`;}return `<li>${link(url,`Source ${i+1} · ${host}`)}${text}</li>`;}).join('');
  const related=(row.related_ids||[]).map(id=>rows.some(r=>r.id===id||(r.aliases||[]).includes(id))?`<a href="#${esc(id)}" data-idea="${esc(id)}">${esc(id)}</a>`:`<span> ${esc(id)}</span>`).join('');
- return `<p class="context">${esc(row.section||'Additional ideas')}${row.confidence==='low'&&row.F!==null?' · * Low-confidence assessment':''}</p>${tags?`<div class="detail-tags" aria-label="Explore related topics">${tags}</div>`:''}<div class="original">${row.original_html||`<p>${esc(row.original_text||'')}</p>`}</div><div class="assessment"><h3>${scope}</h3><p>${esc(row.scope||'This entry has not yet received a paper assessment.')}</p>${row.shared_score_from?`<p>Same assessed scope and scores as <a href="#${esc(row.shared_score_from)}" data-idea="${esc(row.shared_score_from)}">${esc(row.shared_score_from)}</a>.</p>`:''}<p><span class="reason-label">Feasibility.</span> ${esc(row.feasibility_reason)}</p><p><span class="reason-label">Impact.</span> ${esc(row.impact_reason)}</p>${breakdownHTML(row)}<p class="first-check"><span class="reason-label">First check.</span> ${esc(row.gate)}</p></div>${references?`<details class="references"><summary>Literature and comparisons (${refs.length})</summary><ul>${references}</ul><p>Targeted checks; exhaustive novelty clearance is not established.</p></details>`:''}${related?`<p class="related">Related ideas ${related}</p>`:''}<p class="source-note">${link(row.source_url,'Open original document ↗')} · ${esc(row.source_location||row.source_file||'Sunay Storage')}${row.original_note?`<br>${esc(row.original_note)}`:''}</p>`;
+ const originalNote=String(row.original_note||'').replace('Original citation markers link to Storage; checked references are listed above when available.','').trim();
+ return `<p class="context">${esc(row.section||'Additional ideas')}${row.confidence==='low'&&row.F!==null?' · * Low-confidence assessment':''}</p>${tags?`<div class="detail-tags" aria-label="Explore related topics">${tags}</div>`:''}<div class="original">${row.original_html||`<p>${esc(row.original_text||'')}</p>`}</div><div class="assessment"><details class="assessment-disclosure"><summary>${scope}</summary><p>${esc(row.scope||'This entry has not yet received a paper assessment.')}</p>${row.shared_score_from?`<p>Same assessed scope and scores as <a href="#${esc(row.shared_score_from)}" data-idea="${esc(row.shared_score_from)}">${esc(row.shared_score_from)}</a>.</p>`:''}<p><span class="reason-label">Feasibility.</span> ${esc(row.feasibility_reason)}</p><p><span class="reason-label">Impact.</span> ${esc(row.impact_reason)}</p>${breakdownHTML(row)}</details><details class="assessment-disclosure first-check"><summary>First check</summary><p>${esc(row.gate)}</p></details></div>${references?`<details class="references"><summary>Literature and comparisons (${refs.length})</summary><ul>${references}</ul><p>Targeted checks; exhaustive novelty clearance is not established.</p></details>`:''}${related?`<p class="related">Related ideas ${related}</p>`:''}<p class="source-note">${link(row.source_url,'Open original document ↗')} · ${esc(row.source_location||row.source_file||'Sunay Storage')}${originalNote?`<br>${esc(originalNote)}`:''}</p>`;
 }
 function makeRow(row){
  const el=document.createElement('details');el.className='idea';el.id=row.id;el.dataset.id=row.id;
@@ -63,6 +64,7 @@ function render(){
 function openIdea(id,updateHash=true){
  const row=rows.find(r=>r.id===id||(r.aliases||[]).includes(id));if(!row)return;
  dialogId=row.id;$('dialog-id').textContent=row.id;$('dialog-title').textContent=row.title;
+ $('visibility-control').href=`https://sunay-idea-visibility.sunay-joshi1.chatgpt.site/?idea=${encodeURIComponent(row.id)}`;
  $('dialog-scores').innerHTML=`${score(row,'F','Feasibility')}${score(row,'I','Impact')}<span>${row.status==='unassessed_proposal'?'Not yet assessed':'Feasibility · Impact'}</span>`;
  $('dialog-body').innerHTML=detailsHTML(row);$('copy-link').textContent='Copy link';
  if(!$('idea-dialog').open)$('idea-dialog').showModal();$('idea-dialog').scrollTop=0;
@@ -85,7 +87,7 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[data-idea]');i
 document.addEventListener('keydown',e=>{if(e.key==='/'&&!$('idea-dialog').open&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)){e.preventDefault();$('search').focus();}if(e.key==='Escape'&&document.activeElement===$('search')){$('clear').click();}});
 window.addEventListener('popstate',()=>{readURL();render();const id=hashID();if(id)openIdea(id,false);else if($('idea-dialog').open){$('idea-dialog').close();dialogId=null;}});
 window.addEventListener('hashchange',()=>{const id=hashID();if(id)openIdea(id,false);else if($('idea-dialog').open)$('idea-dialog').close();});
-const fetchJSON=async(path,optional=false)=>{try{const r=await fetch(path+'?v=20261111c',{cache:'no-cache'});if(!r.ok)throw new Error(`${path}: ${r.status}`);return await r.json();}catch(e){if(optional)return null;throw e;}};
+const fetchJSON=async(path,optional=false)=>{try{const r=await fetch(path+'?v=20261111d',{cache:'no-cache'});if(!r.ok)throw new Error(`${path}: ${r.status}`);return await r.json();}catch(e){if(optional)return null;throw e;}};
 try{
  const [data,taxonomy,index]=await Promise.all([fetchJSON('./ideas.json'),fetchJSON('./taxonomy.json'),fetchJSON('./semantic-index.json',true)]);
  rows=data.ideas.map((r,order)=>({...r,order,aliases:r.aliases||[],search_text:searchText(r)}));

@@ -12,9 +12,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261111c">
-  <link rel="stylesheet" href="pareto.css?v=20261111c">
-  <script type="module" src="app.js?v=20261111c"></script>
+  <link rel="stylesheet" href="styles.css?v=20261111d">
+  <link rel="stylesheet" href="pareto.css?v=20261111d">
+  <script type="module" src="app.js?v=20261111d"></script>
 </head>
 <body>
   <a class="skip-link" href="#explore">Skip to ideas</a>
@@ -42,7 +42,7 @@
         </div>
         <label class="pareto-filter"><input type="checkbox" id="pareto-only"> Pareto only</label>
       </div>
-      <div class="navigation-line"><nav id="breadcrumbs" aria-label="Topic path"></nav><p id="count" role="status" aria-live="polite">Loading ideas…</p></div>
+      <div class="navigation-line"><nav id="breadcrumbs" aria-label="Topic path"></nav><p id="count" class="sr-only" role="status" aria-live="polite">Loading ideas…</p></div>
       <section id="bubbles-panel" role="tabpanel" aria-labelledby="tab-bubbles"><div id="bubbles-chart"></div></section>
       <section id="pareto-panel" role="tabpanel" aria-labelledby="tab-pareto" hidden><div id="pareto-chart"></div></section>
       <section id="list-panel" role="tabpanel" aria-labelledby="tab-list" hidden>
@@ -55,6 +55,6 @@
     <details class="rubric"><summary>About the scores</summary><div id="rubric-body"></div></details>
     <noscript><p>This navigator needs JavaScript for search and visualizations. <a href="https://www.overleaf.com/project/679049496c769f29fefd3f44">Read the original document.</a></p></noscript>
   </main>
-  <dialog id="idea-dialog" aria-labelledby="dialog-title"><div class="dialog-toolbar"><span id="dialog-id"></span><button id="copy-link" type="button">Copy link</button><button id="close-dialog" type="button" aria-label="Close idea">Close ×</button></div><h2 id="dialog-title"></h2><div id="dialog-scores"></div><div id="dialog-body"></div></dialog>
+  <dialog id="idea-dialog" aria-labelledby="dialog-title"><div class="dialog-toolbar"><span id="dialog-id"></span><a id="visibility-control" target="_blank" rel="noopener noreferrer" aria-label="Hide or show this idea (opens private settings)">Hide / show</a><button id="copy-link" type="button">Copy link</button><button id="close-dialog" type="button" aria-label="Close idea">Close ×</button></div><h2 id="dialog-title"></h2><div id="dialog-scores"></div><div id="dialog-body"></div></dialog>
 </body>
 </html>

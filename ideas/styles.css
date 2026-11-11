@@ -22,3 +22,6 @@ main{max-width:1240px;padding-top:36px}.title-row{display:flex;align-items:basel
 /* Keep the controls close to the content; explanatory detail lives in disclosures. */
 .title-row{margin-bottom:22px}.title-row h1{margin:0}.search-guidance{justify-content:flex-end;margin:0}.search-guidance .sr-only{margin:-1px}.search-guidance>button{margin-top:7px}.view-bar{margin-top:20px}.list-toolbar{justify-content:flex-end;gap:9px}.list-toolbar label{white-space:nowrap}.list-toolbar select{width:250px}.rubric{margin-bottom:0}
 @media(max-width:640px){.title-row{margin-bottom:18px}.view-bar{margin-top:14px}.list-toolbar{flex-direction:row;align-items:center}.list-toolbar select{flex:1;min-width:0;width:auto}}
+
+.assessment-disclosure{margin:0 0 16px}.assessment-disclosure>summary{font-size:.83rem;color:var(--accent)}.assessment-disclosure>p{margin:10px 0 0}
+.dialog-toolbar{flex-wrap:wrap;column-gap:16px;row-gap:8px}.dialog-toolbar #visibility-control{font-size:inherit;white-space:nowrap;text-decoration:none;color:var(--accent);cursor:pointer}.dialog-toolbar #visibility-control:hover{text-decoration:underline}

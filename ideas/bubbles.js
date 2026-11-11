@@ -39,10 +39,8 @@ export function mountBubbles(container,{hierarchy,onNavigate,onOpen}){
   const node=index.nodes.get(focus),children=node.children||[];
   if(!layoutCache.has(focus))layoutCache.set(focus,packCircles(children.map(n=>({node:n,weight:index.descendants.get(n.id).size}))));
   const geometry=layoutCache.get(focus);svg.replaceChildren(svgEl('title',{},node.name||node.label),svgEl('desc',{},'Choose a topic to zoom in, or an individual idea to read it. The adjacent list provides the same navigation. Bubble area indicates the number of ideas, not their value.'));
-  const activeCount=index.descendants.get(focus).size;
   const h=document.createElement('h3');h.textContent=node.name||node.label;
-  const p=document.createElement('p');p.className='bubble-directory-note';p.textContent=`${rows.length} of ${activeCount} ideas in this collection`;
-  const list=document.createElement('ul');side.replaceChildren(h,p,list);
+  const list=document.createElement('ul');side.replaceChildren(h,list);
     geometry.forEach(({x,y,r,item},i)=>{
    const child=item.node,total=index.descendants.get(child.id).size,matching=[...index.descendants.get(child.id)].filter(id=>visible.has(id)).length;
    const label=child.name||child.label||child.id,isLeaf=!!child.ideaId;
