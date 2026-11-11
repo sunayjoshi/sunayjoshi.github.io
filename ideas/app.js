@@ -1,7 +1,7 @@
-import{sortIdeas}from'./sorting.js?v=20261111b';
-import{createSearch,searchText}from'./search.js?v=20261111b';
-import{paretoIds,mountPareto}from'./pareto.js?v=20261111b';
-import{indexHierarchy,mountBubbles}from'./bubbles.js?v=20261111b';
+import{sortIdeas}from'./sorting.js?v=20261111c';
+import{createSearch,searchText}from'./search.js?v=20261111c';
+import{paretoIds,mountPareto}from'./pareto.js?v=20261111c';
+import{indexHierarchy,mountBubbles}from'./bubbles.js?v=20261111c';
 const $=id=>document.getElementById(id);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeURL=value=>{try{const u=new URL(value);return ['https:','http:'].includes(u.protocol)?u.href:null;}catch{return null;}};
@@ -85,7 +85,7 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[data-idea]');i
 document.addEventListener('keydown',e=>{if(e.key==='/'&&!$('idea-dialog').open&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)){e.preventDefault();$('search').focus();}if(e.key==='Escape'&&document.activeElement===$('search')){$('clear').click();}});
 window.addEventListener('popstate',()=>{readURL();render();const id=hashID();if(id)openIdea(id,false);else if($('idea-dialog').open){$('idea-dialog').close();dialogId=null;}});
 window.addEventListener('hashchange',()=>{const id=hashID();if(id)openIdea(id,false);else if($('idea-dialog').open)$('idea-dialog').close();});
-const fetchJSON=async(path,optional=false)=>{try{const r=await fetch(path+'?v=20261111b',{cache:'no-cache'});if(!r.ok)throw new Error(`${path}: ${r.status}`);return await r.json();}catch(e){if(optional)return null;throw e;}};
+const fetchJSON=async(path,optional=false)=>{try{const r=await fetch(path+'?v=20261111c',{cache:'no-cache'});if(!r.ok)throw new Error(`${path}: ${r.status}`);return await r.json();}catch(e){if(optional)return null;throw e;}};
 try{
  const [data,taxonomy,index]=await Promise.all([fetchJSON('./ideas.json'),fetchJSON('./taxonomy.json'),fetchJSON('./semantic-index.json',true)]);
  rows=data.ideas.map((r,order)=>({...r,order,aliases:r.aliases||[],search_text:searchText(r)}));
