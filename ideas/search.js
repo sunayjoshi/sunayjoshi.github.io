@@ -53,7 +53,7 @@ export function createSearch(ideas, index = null, taxonomy = null) {
   function search(query){
     const q=normalize(query).trim().slice(0,600);
     if(!q)return docs.map(d=>({idea:d.idea,score:0,reason:'',excerpt:d.scope||d.body.slice(0,230),topics:meta[d.idea.id]?.tags||[]}));
-    const exactId=q.match(/^(?:idea[-\s]?)?([behrsf]\d{2,3})$/i)?.[1]?.toUpperCase();
+    const exactId=q.match(/^(?:idea[-\s]?)?([behnrsf]\d{2,3})$/i)?.[1]?.toUpperCase();
     if(exactId){return docs.filter(d=>d.idea.id===exactId||(d.idea.aliases||[]).includes(exactId)).map(d=>({idea:d.idea,score:100,reason:d.idea.id===exactId?'Exact idea ID':'Merged idea ID',excerpt:excerpt(d,[],[]),topics:meta[d.idea.id]?.tags||[]}));}
     const terms=[...new Set(tokenize(q))];
     const matchedConcepts=detectConcepts(q);

@@ -1,5 +1,5 @@
 import{sortIdeas}from'./sorting.js?v=20261111e';
-import{createSearch,searchText}from'./search.js?v=20261111e';
+import{createSearch,searchText}from'./search.js?v=20261118';
 import{paretoIds,mountPareto}from'./pareto.js?v=20261111e';
 import{indexHierarchy,mountBubbles}from'./bubbles.js?v=20261111e';
 const $=id=>document.getElementById(id);
@@ -87,7 +87,7 @@ document.addEventListener('click',e=>{const a=e.target.closest('a[data-idea]');i
 document.addEventListener('keydown',e=>{if(e.key==='/'&&!$('idea-dialog').open&&!['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)){e.preventDefault();$('search').focus();}if(e.key==='Escape'&&document.activeElement===$('search')){$('clear').click();}});
 window.addEventListener('popstate',()=>{readURL();render();const id=hashID();if(id)openIdea(id,false);else if($('idea-dialog').open){$('idea-dialog').close();dialogId=null;}});
 window.addEventListener('hashchange',()=>{const id=hashID();if(id)openIdea(id,false);else if($('idea-dialog').open)$('idea-dialog').close();});
-const fetchJSON=async(path,optional=false)=>{try{const r=await fetch(path+'?v=20261111e',{cache:'no-cache'});if(!r.ok)throw new Error(`${path}: ${r.status}`);return await r.json();}catch(e){if(optional)return null;throw e;}};
+const fetchJSON=async(path,optional=false)=>{try{const r=await fetch(path+'?v=20261118',{cache:'no-cache'});if(!r.ok)throw new Error(`${path}: ${r.status}`);return await r.json();}catch(e){if(optional)return null;throw e;}};
 try{
  const [data,taxonomy,index]=await Promise.all([fetchJSON('./ideas.json'),fetchJSON('./taxonomy.json'),fetchJSON('./semantic-index.json',true)]);
  rows=data.ideas.map((r,order)=>({...r,order,aliases:r.aliases||[],search_text:searchText(r)}));
